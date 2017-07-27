@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSArray *faces;
 @property (nonatomic, assign) NSInteger value;
 
-- (void)randomize;
+- (void)roll;
 - (NSNumber *)faceValue;
 
 @end

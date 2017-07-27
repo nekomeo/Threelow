@@ -14,12 +14,13 @@
 {
     if (self = [super init])
     {
+//        _faces = @[@"⚀", @"⚁", @"⚂", @"⚃", @"⚄", @"⚅"];
         _faces = @[@1, @2, @3, @4, @5, @6];
     }
     return self;
 }
 
-- (void)randomize
+- (void)roll
 {
     self.value = arc4random_uniform(5);
 }

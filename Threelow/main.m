@@ -11,21 +11,40 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-
-        Dice *dice1 = [[Dice alloc] init];
-        Dice *dice2 = [[Dice alloc] init];
-        Dice *dice3 = [[Dice alloc] init];
-        Dice *dice4 = [[Dice alloc] init];
-        Dice *dice5 = [[Dice alloc] init];
-        Dice *dice6 = [[Dice alloc] init];
         
-        NSArray *dices = @[dice1, dice2, dice3, dice4, dice5, dice6];
-        for (int i = 0; i < dices.count; i++)
+        NSArray *dices = @[ // variable efficient?
+                           [[Dice alloc] init],
+                           [[Dice alloc] init],
+                           [[Dice alloc] init],
+                           [[Dice alloc] init],
+                           [[Dice alloc] init]
+                           ];
+        
+        BOOL roll = YES;
+        char input[255];
+        
+        NSString *convertedChar = [[NSString alloc] init];
+        NSString *typeRollToRoll = @"roll";
+        NSLog(@"Enter 'roll' to roll");
+        
+        while (roll)
         {
-            Dice *die = dices[i];
-            
-            [die randomize]; // randomize objects in the array
-            NSLog(@"%@", die.faceValue);
+            if ([typeRollToRoll isEqualToString:@"roll"]) {
+                fgets(input, 255, stdin);
+                convertedChar = [NSString stringWithUTF8String:input];
+                
+                for (int i = 0; i < dices.count; i++)
+                {
+                    Dice *die = dices[i];
+                    
+                    [die roll]; // randomize objects in the array
+                    NSLog(@"%@", die.faceValue);
+                }
+            }
+            else
+            {
+                break;
+            }
         }
 
     }
